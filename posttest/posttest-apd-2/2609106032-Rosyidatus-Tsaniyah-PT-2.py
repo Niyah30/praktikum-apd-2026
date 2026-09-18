@@ -12,7 +12,7 @@ biaya_kompensasi = total_berat_akhir * 0.05
 rata_rata = total_berat_akhir / len(bagasi_list)
 bagasi_tengah = bagasi_list[2:5]
 
-nim = 26
+nim = 32
 boolean = nim < rata_rata
 
 print("==========DATA BAGASI PENUMPANG==========")
