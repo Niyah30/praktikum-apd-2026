@@ -6,10 +6,10 @@ print("=== LOGIN ===")
 percobaan = 0
 login = False
 
-while percobaan < 3 and login == False:
+while percobaan < 3 and not login:
     username_input = input("Masukkan username anda: ")
     password_input = input("Masukkan password anda: ")
-    percobaan = percobaan + 1
+    percobaan += 1
 
     if username_input == username and password_input == password:
         login = True
@@ -38,7 +38,7 @@ while data_input == "ya":
 
     while True:
         ikut = input("Apakah siswa mengikuti ujian? (ya/tidak): ")
-        if ikut == "ya" or ikut == "tidak":
+        if ikut in ["ya", "tidak"]:
             break
         print("Input tidak valid. Silakan input ulang.")
 
@@ -53,9 +53,6 @@ while data_input == "ya":
             print("Total jawaban harus 20. Silakan input ulang.")
         nilai = benar * 5
 
-    print("Nilai", nama, ":", nilai)
-    print()
-
     if nilai >= 80:
         kategori = "Sangat baik"
     elif nilai >= 60:
@@ -65,28 +62,24 @@ while data_input == "ya":
     else:
         kategori = "Perlu belajar lagi"
 
+    print("Nilai", nama, ":", nilai)
+    print()
+
     daftar_nama.append(nama)
     daftar_kelas.append(kelas)
     daftar_ikut.append(ikut)
     daftar_nilai.append(nilai)
     daftar_kategori.append(kategori)
 
-    sudah_ada = False
-    for kls in kelas_unik:
-        if kls == kelas:
-            sudah_ada = True
-            break
-
-    if sudah_ada == False:
+    if kelas not in kelas_unik:
         kelas_unik.append(kelas)
 
-    if ikut == "ya":
-        while True:
-            data_input = input("Apakah masih ingin menginput data siswa? (ya/tidak): ")
-            if data_input == "ya" or data_input == "tidak":
-                break
-            print("Input tidak valid. Silakan input ulang.")
-        print()
+    while True:
+        data_input = input("Apakah masih ingin menginput data siswa? (ya/tidak): ")
+        if data_input in ["ya", "tidak"]:
+            break
+        print("Input tidak valid. Silakan input ulang.")
+    print()
 
 print("=== NILAI SELURUH SISWA ===")
 print()
